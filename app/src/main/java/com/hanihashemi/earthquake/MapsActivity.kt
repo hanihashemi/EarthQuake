@@ -1,14 +1,15 @@
 package com.hanihashemi.earthquake
 
 import android.os.Bundle
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.hanihashemi.earthquake.base.BaseTransparentActivity
+import timber.log.Timber
 
 class MapsActivity : BaseTransparentActivity(), OnMapReadyCallback {
 
@@ -27,6 +28,9 @@ class MapsActivity : BaseTransparentActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+
+        if (!googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.google_map)))
+            Timber.d("====> Style parsing failed.");
 
         val sydney = LatLng(-34.0, 151.0)
         map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
