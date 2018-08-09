@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">EarthQuake</string>
     <string name="title_activity_maps">Map</string>
+    <string name="content_description_map_expand_collapse_button">Show list of earthquakes</string>
 </resources>
