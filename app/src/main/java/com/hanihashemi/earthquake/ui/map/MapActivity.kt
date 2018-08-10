@@ -1,4 +1,4 @@
-package com.hanihashemi.earthquake
+package com.hanihashemi.earthquake.ui.map
 
 import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -8,10 +8,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import com.hanihashemi.earthquake.R
 import com.hanihashemi.earthquake.base.BaseTransparentActivity
 import timber.log.Timber
 
-class MapsActivity : BaseTransparentActivity(), OnMapReadyCallback {
+class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
 
