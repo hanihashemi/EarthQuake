@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content" />
 
             <android.support.v7.widget.RecyclerView
-                tools:listitem="@layout/feature_item"
+                tools:listitem="@layout/list_item_feature"
                 android:id="@+id/rclEarthQuakeList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
