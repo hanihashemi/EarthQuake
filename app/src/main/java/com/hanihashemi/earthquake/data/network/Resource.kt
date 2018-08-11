@@ -1,6 +1,6 @@
-package com.hanihashemi.earthquake.data.db
+package com.hanihashemi.earthquake.data.network
 
-import com.hanihashemi.earthquake.data.db.Status.*
+import com.hanihashemi.earthquake.data.network.Status.*
 
 class Resource<T> private constructor(
         val status: Status,

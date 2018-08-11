@@ -1,7 +1,6 @@
 package com.hanihashemi.earthquake.data.network
 
 import android.arch.lifecycle.LiveData
-import com.hanihashemi.earthquake.data.db.ApiResponse
 import com.hanihashemi.earthquake.model.FeatureCollection
 import retrofit2.http.GET
 

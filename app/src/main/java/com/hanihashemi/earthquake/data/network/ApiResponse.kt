@@ -1,4 +1,4 @@
-package com.hanihashemi.earthquake.data.db
+package com.hanihashemi.earthquake.data.network
 
 import retrofit2.Response
 
