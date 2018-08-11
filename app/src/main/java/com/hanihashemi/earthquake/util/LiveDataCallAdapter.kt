@@ -1,7 +1,7 @@
 package com.hanihashemi.earthquake.util
 
 import android.arch.lifecycle.LiveData
-import com.hanihashemi.earthquake.data.db.ApiResponse
+import com.hanihashemi.earthquake.data.network.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback
