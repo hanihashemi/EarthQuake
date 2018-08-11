@@ -44,6 +44,8 @@ dependencies {
     //Lifecycle
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
 
     //Network
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
@@ -55,4 +57,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
 }
