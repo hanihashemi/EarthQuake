@@ -2,6 +2,7 @@ package com.hanihashemi.earthquake.ui.map
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.arch.persistence.room.Room
 import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,13 +14,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.hanihashemi.earthquake.R
 import com.hanihashemi.earthquake.base.BaseTransparentActivity
 import com.hanihashemi.earthquake.data.db.AppDatabase
-import com.hanihashemi.earthquake.data.repository.EventRepository
 import com.hanihashemi.earthquake.data.network.Retrofit
+import com.hanihashemi.earthquake.data.repository.EventRepository
+import com.hanihashemi.earthquake.ui.map.adapter.EventAdapter
+import kotlinx.android.synthetic.main.activity_maps.*
 import timber.log.Timber
-import android.arch.persistence.room.Room
-
-
-
 
 class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
@@ -31,18 +30,34 @@ class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initViewModel()
+        initMap()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        val adapter = EventAdapter()
+        rclEarthQuakeList.adapter = adapter
+        subscribeUi(adapter)
+    }
+
+    private fun initViewModel() {
         val db = Room.databaseBuilder(applicationContext,
                 AppDatabase::class.java, "database-name").build()
 
         viewModel = ViewModelProviders.of(this).get(MapViewModel::class.java)
         viewModel.init(EventRepository(Retrofit.event(), db.featureDao()))
+    }
 
+    private fun initMap() {
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
 
+    private fun subscribeUi(adapter: EventAdapter) {
         viewModel.getEvents().observe(this, Observer { resource ->
-            resource?.data?.features?.forEach { print(it) }
+            if (resource != null) adapter.submitList(resource.data?.features)
         })
     }
 
