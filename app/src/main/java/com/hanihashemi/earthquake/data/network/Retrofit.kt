@@ -1,4 +1,4 @@
-package com.hanihashemi.earthquake.network
+package com.hanihashemi.earthquake.data.network
 
 import com.hanihashemi.earthquake.BuildConfig
 import com.hanihashemi.earthquake.util.LiveDataCallAdapterFactory

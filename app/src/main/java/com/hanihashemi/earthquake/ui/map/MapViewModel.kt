@@ -3,9 +3,8 @@ package com.hanihashemi.earthquake.ui.map
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
 import com.hanihashemi.earthquake.model.FeatureCollection
-import com.hanihashemi.earthquake.network.EventRepository
-import com.hanihashemi.earthquake.network.Resource
-import com.hanihashemi.earthquake.network.Retrofit
+import com.hanihashemi.earthquake.data.repository.EventRepository
+import com.hanihashemi.earthquake.data.db.Resource
 
 class MapViewModel : ViewModel() {
     private lateinit var eventRepo: EventRepository

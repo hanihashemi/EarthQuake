@@ -1,7 +1,12 @@
-package com.hanihashemi.earthquake.network
+package com.hanihashemi.earthquake.data.repository
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import com.hanihashemi.earthquake.data.db.ApiResponse
+import com.hanihashemi.earthquake.data.db.FeatureDao
+import com.hanihashemi.earthquake.data.db.NetworkBoundResource
+import com.hanihashemi.earthquake.data.db.Resource
+import com.hanihashemi.earthquake.data.network.EventService
 import com.hanihashemi.earthquake.model.FeatureCollection
 import com.hanihashemi.earthquake.util.AppExecutors
 

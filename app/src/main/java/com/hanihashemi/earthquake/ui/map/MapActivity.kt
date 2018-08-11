@@ -12,9 +12,9 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.hanihashemi.earthquake.R
 import com.hanihashemi.earthquake.base.BaseTransparentActivity
-import com.hanihashemi.earthquake.network.AppDatabase
-import com.hanihashemi.earthquake.network.EventRepository
-import com.hanihashemi.earthquake.network.Retrofit
+import com.hanihashemi.earthquake.data.db.AppDatabase
+import com.hanihashemi.earthquake.data.repository.EventRepository
+import com.hanihashemi.earthquake.data.network.Retrofit
 import timber.log.Timber
 import android.arch.persistence.room.Room
 

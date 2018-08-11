@@ -1,4 +1,4 @@
-package com.hanihashemi.earthquake.network
+package com.hanihashemi.earthquake.data.db
 
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
