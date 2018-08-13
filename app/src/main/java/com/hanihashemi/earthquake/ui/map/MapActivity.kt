@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.arch.persistence.room.Room
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -38,6 +39,7 @@ class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
     private fun initRecyclerView() {
         val adapter = EventAdapter()
         rclEarthQuakeList.adapter = adapter
+        rclEarthQuakeList.layoutManager = LinearLayoutManager(this)
         subscribeUi(adapter)
     }
 
