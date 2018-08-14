@@ -46,12 +46,15 @@ class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCa
                         .placeholder(ColorDrawable(Color.GRAY))
                         .fitCenter()
                         .into(imgFlag)
-                txtDate.text = DateUtils.getRelativeDateTimeString(
+
+                val time = DateUtils.getRelativeDateTimeString(
                         root.context,
                         item.properties.time,
                         DateUtils.SECOND_IN_MILLIS,
                         DateUtils.WEEK_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_RELATIVE)
+
+                txtDate.text = time.substring(0, time.lastIndexOf(","))
                 executePendingBindings()
             }
         }
