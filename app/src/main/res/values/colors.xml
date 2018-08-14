@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#fff</color>
     <color name="textHint">#AFAFAF</color>
+
+    <color name="alertLevel1">#41d134</color>
+    <color name="alertLevel2">#fae226</color>
+    <color name="alertLevel3">#f7a809</color>
+    <color name="alertLevel4">#e94c49</color>
 </resources>

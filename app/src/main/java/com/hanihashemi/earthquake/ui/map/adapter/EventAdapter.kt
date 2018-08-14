@@ -2,6 +2,7 @@ package com.hanihashemi.earthquake.ui.map.adapter
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.support.v4.content.ContextCompat
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.text.format.DateUtils
@@ -9,10 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hanihashemi.earthquake.GlideApp
-import com.hanihashemi.earthquake.GlideOptions.fitCenterTransform
+import com.hanihashemi.earthquake.R
 import com.hanihashemi.earthquake.databinding.ListItemFeatureBinding
 import com.hanihashemi.earthquake.model.Feature
-import timber.log.Timber
 
 class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCallback()) {
 
@@ -55,8 +55,18 @@ class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCa
                         DateUtils.FORMAT_ABBREV_RELATIVE)
 
                 txtDate.text = time.substring(0, time.lastIndexOf(","))
+                txtMag.setTextColor(ContextCompat.getColor(root.context, chooseMagColor(item.properties.mag)))
                 executePendingBindings()
             }
         }
+
+        fun chooseMagColor(value: Float) =
+                when {
+                    value <= 3.5F -> R.color.alertLevel1
+                    value <= 5F -> R.color.alertLevel2
+                    value <= 6.5F -> R.color.alertLevel3
+                    else -> R.color.alertLevel4
+                }
+
     }
 }
