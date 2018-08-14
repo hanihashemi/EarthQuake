@@ -1,13 +1,18 @@
 package com.hanihashemi.earthquake.ui.map.adapter
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hanihashemi.earthquake.GlideApp
+import com.hanihashemi.earthquake.GlideOptions.fitCenterTransform
 import com.hanihashemi.earthquake.databinding.ListItemFeatureBinding
 import com.hanihashemi.earthquake.model.Feature
+import timber.log.Timber
 
 class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCallback()) {
 
@@ -36,6 +41,11 @@ class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCa
             binding.apply {
                 clickListener = listener
                 feature = item
+                GlideApp.with(root.context)
+                        .load("https://www.countryflags.io/${item.properties.countryCode}/flat/64.png")
+                        .placeholder(ColorDrawable(Color.GRAY))
+                        .fitCenter()
+                        .into(imgFlag)
                 txtDate.text = DateUtils.getRelativeDateTimeString(
                         root.context,
                         item.properties.time,

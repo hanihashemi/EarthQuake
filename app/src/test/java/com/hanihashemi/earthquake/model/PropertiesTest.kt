@@ -21,10 +21,13 @@ class PropertiesTest{
         assertEquals("us", properties.countryCode)
 
         properties = Properties(0F, "", "M 1.6 - 67km N of Tonopah, Canada", 222L)
-        assertEquals("CA", properties.countryCode)
+        assertEquals("ca", properties.countryCode)
+
+        properties = Properties(0F, "", "5km W of Lake Henshaw, CA", 222L)
+        assertEquals("ca", properties.countryCode)
 
         properties = Properties(0F, "", "M 1.6 - 67km N of Tonopah, Turkey", 222L)
-        assertEquals("TR", properties.countryCode)
+        assertEquals("tr", properties.countryCode)
     }
 
 

@@ -14,8 +14,9 @@ data class Properties(
     val countryCode: String
         get() {
             val countryName = title.substring(title.lastIndexOf(",") + 2)
+            if (countryName.length == 2) return countryName.toLowerCase()
             val abbreviations = CountryCode.findByName(countryName)
 
-            return if (abbreviations.size == 0) "us" else abbreviations.first().name
+            return if (abbreviations.size == 0) "us" else abbreviations.first().name.toLowerCase()
         }
 }

@@ -2,6 +2,7 @@ package com.hanihashemi.earthquake
 
 import android.app.Application
 import android.util.Log
+import com.bumptech.glide.annotation.GlideModule
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
