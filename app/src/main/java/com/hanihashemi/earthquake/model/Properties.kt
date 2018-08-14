@@ -19,4 +19,7 @@ data class Properties(
 
             return if (abbreviations.size == 0) "us" else abbreviations.first().name.toLowerCase()
         }
+
+    val magWithSingleDecimalSymbol: String
+        get() = "%.1f".format(mag)
 }
