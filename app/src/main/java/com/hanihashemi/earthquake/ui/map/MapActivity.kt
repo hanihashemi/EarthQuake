@@ -18,7 +18,7 @@ import com.hanihashemi.earthquake.data.db.AppDatabase
 import com.hanihashemi.earthquake.data.network.Retrofit
 import com.hanihashemi.earthquake.data.repository.EventRepository
 import com.hanihashemi.earthquake.ui.map.adapter.EventAdapter
-import kotlinx.android.synthetic.main.activity_maps.*
+import kotlinx.android.synthetic.main.maps_activity.*
 import timber.log.Timber
 
 class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
@@ -26,7 +26,7 @@ class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
     private lateinit var viewModel: MapViewModel
 
     override val layoutResource
-        get() = R.layout.activity_maps
+        get() = R.layout.maps_activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
