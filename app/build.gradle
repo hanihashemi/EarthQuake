@@ -33,13 +33,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.neovisionaries:nv-i18n:1.23'
+
+    //Support Library
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation "com.android.support:appcompat-v7:$support_library_version"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'com.google.android.gms:play-services-maps:15.0.1'
-    implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation "com.android.support:cardview-v7:$support_library_version"
     implementation "com.android.support:recyclerview-v7:$support_library_version"
+
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     //Lifecycle
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
