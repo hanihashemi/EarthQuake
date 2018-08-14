@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/main_label_latest_earthquake"
-                android:textColor="@color/gray"
+                android:textColor="@color/textHint"
                 android:textSize="12sp" />
 
             <android.support.v7.widget.RecyclerView

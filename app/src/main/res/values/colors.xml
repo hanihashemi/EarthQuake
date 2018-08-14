@@ -3,5 +3,5 @@
     <color name="colorPrimary">#fff</color>
     <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#fff</color>
-    <color name="gray">#AFAFAF</color>
+    <color name="textHint">#AFAFAF</color>
 </resources>

@@ -2,6 +2,7 @@ package com.hanihashemi.earthquake.ui.map.adapter
 
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,12 @@ class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCa
             binding.apply {
                 clickListener = listener
                 feature = item
+                txtDate.text = DateUtils.getRelativeDateTimeString(
+                        root.context,
+                        item.properties.time,
+                        DateUtils.SECOND_IN_MILLIS,
+                        DateUtils.WEEK_IN_MILLIS,
+                        DateUtils.FORMAT_ABBREV_RELATIVE)
                 executePendingBindings()
             }
         }

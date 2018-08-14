@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="java.lang.String" />
+
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
@@ -21,12 +23,13 @@
 
         <ImageView
             android:id="@+id/imgFlag"
-            android:layout_width="40dp"
-            android:layout_height="22dp"
+            android:layout_width="25dp"
+            android:layout_height="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:background="#0f0fff"
             android:contentDescription="@string/content_description_feature_item_country_flag"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,15 +38,14 @@
 
         <TextView
             android:id="@+id/txtCity"
+            style="@style/TextNormal.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:maxLines="1"
-            android:text="@{feature.properties.title}"
-            android:textSize="14sp"
+            android:text="@{feature.properties.city}"
             app:layout_constraintBottom_toTopOf="@+id/txtPlace"
             app:layout_constraintEnd_toStartOf="@+id/txtDate"
             app:layout_constraintStart_toEndOf="@+id/imgFlag"
@@ -53,14 +55,14 @@
 
         <TextView
             android:id="@+id/txtPlace"
+            style="@style/TextHint"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:maxLines="1"
-            android:textSize="12sp"
+            android:text="@{feature.properties.place}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txtDate"
             app:layout_constraintStart_toEndOf="@+id/imgFlag"
@@ -69,11 +71,12 @@
 
         <TextView
             android:id="@+id/txtDate"
+            style="@style/TextHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:textSize="12sp"
+            android:maxWidth="50dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/txtMag"
             app:layout_constraintEnd_toStartOf="@+id/txtMag"
             tools:text="10 mins ago" />
@@ -86,6 +89,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
+            android:text="@{String.valueOf(feature.properties.mag)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
