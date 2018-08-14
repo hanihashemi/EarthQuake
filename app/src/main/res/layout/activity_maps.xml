@@ -53,6 +53,7 @@
         android:clickable="true"
         android:focusable="true"
         app:cardElevation="4dp"
+        app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/imgExpandCollapse"
         app:layout_constraintDimensionRatio="w,1:1"
