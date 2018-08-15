@@ -2,13 +2,14 @@ package com.hanihashemi.earthquake.ui.map
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
+import android.arch.paging.PagedList
 import com.hanihashemi.earthquake.data.network.Resource
 import com.hanihashemi.earthquake.data.repository.EventRepository
 import com.hanihashemi.earthquake.model.Feature
 
 class MapViewModel : ViewModel() {
     private lateinit var eventRepo: EventRepository
-    private var features: LiveData<Resource<List<Feature>>>? = null
+    private var features: LiveData<Resource<PagedList<Feature>>>? = null
 
     fun init(eventRepository: EventRepository) {
         this.eventRepo = eventRepository

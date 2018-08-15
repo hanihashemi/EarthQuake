@@ -1,9 +1,9 @@
 package com.hanihashemi.earthquake.ui.map.adapter
 
+import android.arch.paging.PagedListAdapter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.support.v4.content.ContextCompat
-import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.text.format.DateUtils
 import android.view.LayoutInflater
@@ -14,12 +14,13 @@ import com.hanihashemi.earthquake.R
 import com.hanihashemi.earthquake.databinding.ListItemFeatureBinding
 import com.hanihashemi.earthquake.model.Feature
 
-class EventAdapter : ListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCallback()) {
+class EventAdapter : PagedListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val feature = getItem(position)
+        val feature:  Feature? = getItem(position)
         holder.apply {
-            bind(createOnClickListener(feature.id), feature)
+            if (feature != null)
+                bind(createOnClickListener(feature.id), feature)
         }
     }
 
