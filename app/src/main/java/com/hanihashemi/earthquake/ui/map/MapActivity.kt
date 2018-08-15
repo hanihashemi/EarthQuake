@@ -59,7 +59,7 @@ class MapActivity : BaseTransparentActivity(), OnMapReadyCallback {
 
     private fun subscribeUi(adapter: EventAdapter) {
         viewModel.getEvents().observe(this, Observer { resource ->
-            if (resource != null) adapter.submitList(resource.data?.features)
+            if (resource != null) adapter.submitList(resource.data)
         })
     }
 

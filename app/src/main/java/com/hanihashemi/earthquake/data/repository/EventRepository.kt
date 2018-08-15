@@ -7,35 +7,25 @@ import com.hanihashemi.earthquake.data.network.ApiResponse
 import com.hanihashemi.earthquake.data.network.EventService
 import com.hanihashemi.earthquake.data.network.NetworkBoundResource
 import com.hanihashemi.earthquake.data.network.Resource
+import com.hanihashemi.earthquake.model.Feature
 import com.hanihashemi.earthquake.model.FeatureCollection
+import com.hanihashemi.earthquake.model.Properties
 import com.hanihashemi.earthquake.util.AppExecutors
 
 class EventRepository(
         val eventService: EventService,
         val featureDao: FeatureDao) {
 
-    fun get(): LiveData<Resource<FeatureCollection>> {
-        return object : NetworkBoundResource<FeatureCollection, FeatureCollection>(AppExecutors()) {
+    fun get(): LiveData<Resource<List<Feature>>> {
+        return object : NetworkBoundResource<List<Feature>, FeatureCollection>(AppExecutors()) {
             override fun saveCallResult(item: FeatureCollection) =
                     featureDao.insert(*item.features.toTypedArray())
 
-            override fun shouldFetch(data: FeatureCollection?) = true
+            override fun shouldFetch(data: List<Feature>?) = true
 
-            override fun loadFromDb(): LiveData<FeatureCollection> {
-                val features = featureDao.loadAll()
+            override fun loadFromDb(): LiveData<List<Feature>> = featureDao.loadAll()
 
-                val featureCollection = MediatorLiveData<FeatureCollection>()
-                featureCollection.addSource(features) {
-                    if (it != null)
-                        featureCollection.value = FeatureCollection(it)
-                    else
-                        featureCollection.value = FeatureCollection(listOf())
-                }
-
-                return featureCollection
-            }
-
-            override fun createCall(): LiveData<ApiResponse<FeatureCollection>> = eventService.get()
+            override fun createCall(): LiveData<ApiResponse<FeatureCollection>> = eventService.get(10)
         }.asLiveData()
     }
 }
