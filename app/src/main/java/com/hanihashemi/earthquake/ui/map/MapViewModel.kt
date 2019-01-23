@@ -1,24 +1,27 @@
 package com.hanihashemi.earthquake.ui.map
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
-import android.arch.paging.PagedList
 import com.hanihashemi.earthquake.data.network.Resource
 import com.hanihashemi.earthquake.data.repository.EventRepository
-import com.hanihashemi.earthquake.model.Feature
+import com.hanihashemi.earthquake.model.FeatureCollection
 
 class MapViewModel : ViewModel() {
     private lateinit var eventRepo: EventRepository
-    private var features: LiveData<Resource<PagedList<Feature>>>? = null
+    private var trigger = MutableLiveData<Int>()
+    val features: LiveData<Resource<FeatureCollection>>
 
-    fun init(eventRepository: EventRepository) {
-        this.eventRepo = eventRepository
-
-        if (features != null)
-            return
-
-        features = eventRepository.get()
+    init {
+        features = Transformations.switchMap(trigger) { eventRepo.get(it) }
     }
 
-    fun getEvents() = features!!
+    fun init(eventRepo: EventRepository) {
+        this.eventRepo = eventRepo
+    }
+
+    fun nextPage(offset: Int = 1) {
+        trigger.value = offset
+    }
 }

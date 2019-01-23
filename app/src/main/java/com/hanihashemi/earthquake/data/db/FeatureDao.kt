@@ -1,8 +1,6 @@
 package com.hanihashemi.earthquake.data.db
 
 import android.arch.lifecycle.LiveData
-import android.arch.paging.DataSource
-import android.arch.paging.PagedList
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
@@ -18,6 +16,9 @@ interface FeatureDao {
     @Query("SELECT * FROM feature WHERE id = :featureId")
     fun load(featureId: String): LiveData<Feature>
 
-    @Query("SELECT * FROM feature")
-    fun loadAll(): DataSource.Factory<Int, Feature>
+    @Query("SELECT * FROM feature order by time DESC LIMIT 10")
+    fun loadAll(): LiveData<List<Feature>>
+
+    @Query("DELETE FROM feature")
+    fun deleteAll()
 }

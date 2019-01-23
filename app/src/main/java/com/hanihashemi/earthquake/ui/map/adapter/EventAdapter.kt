@@ -1,6 +1,5 @@
 package com.hanihashemi.earthquake.ui.map.adapter
 
-import android.arch.paging.PagedListAdapter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.support.v4.content.ContextCompat
@@ -14,10 +13,11 @@ import com.hanihashemi.earthquake.R
 import com.hanihashemi.earthquake.databinding.ListItemFeatureBinding
 import com.hanihashemi.earthquake.model.Feature
 
-class EventAdapter : PagedListAdapter<Feature, EventAdapter.ViewHolder>(FeatureDiffCallback()) {
+class EventAdapter(private val features: List<Feature>) : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
+    override fun getItemCount() = features.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val feature:  Feature? = getItem(position)
+        val feature: Feature? = features[position]
         holder.apply {
             if (feature != null)
                 bind(createOnClickListener(feature.id), feature)
